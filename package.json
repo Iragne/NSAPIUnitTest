@@ -1,0 +1,25 @@
+{
+  "name": "NSAPIUnitTest",
+  "version": "0.0.1",
+  "description": "Unit test for NSAPI",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Iragne/NSAPIUnitTest.git"
+  },
+  "keywords": [
+    "NSAPI",
+    "Test"
+  ],
+  "author": "Iragne",
+  "license": "BSD",
+  "dependencies" : {
+    "mongodb": "x",
+    "async": "x",
+    "mongoose": "x",
+    "mocha": "*",
+    "should": "*"
+  },
+  "scripts": {
+    "test": "make test-all"
+  }
+}
