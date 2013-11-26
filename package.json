@@ -17,7 +17,8 @@
     "async": "x",
     "mongoose": "x",
     "mocha": "*",
-    "should": "*"
+    "should": "*",
+    "nconf":"*"
   },
   "scripts": {
     "test": "make test-all"

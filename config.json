@@ -1,0 +1,20 @@
+{
+  "conf": {
+    "log":{
+      "colors":true,
+      "enabled":true,
+      "levellog":3
+    },
+    "mongodb":{
+        "database": "nsapi",
+        "host": "46.105.111.232",
+        "port": "27017",
+        "user":"admin",
+        "password":"admin"
+    },
+    "api":{
+      "url":"nsapi-netco-int.jast-io.com",
+      "key":"4705e9858deb84b8c55852c08301323041632702"
+    }
+  }
+}
