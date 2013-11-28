@@ -2,31 +2,32 @@ var querystring = require('querystring');
 var http = require('http');
 var config = require("../conf/conf.js");
 
-var cookie = [];
+var static_cookie = "";
 
 var callNsApi = function(opt, post,cb) {
 	
 
 	if (!opt.headers)
 		opt.headers = {};
-	if (cookie && opt) {
-		cookie = (cookie + "").split(";").shift();
+	if (static_cookie && opt) {
+		cookie = (static_cookie + "").split(";").shift();
 		opt.headers.Cookie = cookie;
+		//console.log("SEND",static_cookie,opt.path);
 	}else{
-		console.log(cookie);
+		//console.log(static_cookie);
 	}
 	if(post){
-		opt.headers = {
-			'Content-Type': 'application/x-www-form-urlencoded',
-			'Content-Length': post.length
-		};
+		opt.headers['Content-Type'] ='application/x-www-form-urlencoded';
+		opt.headers['Content-Length'] = post.length;
 	}
+	//console.log("SEND",opt);
+	//console.log("SEND",opt.path);
 	//console.log(opt,post);
 	var post_req = http.request(opt, function(res) {
 	      res.setEncoding('utf8');
 	      if(res.headers["set-cookie"])
-	      	cookie = res.headers["set-cookie"];
-	      //console.log(res.headers)
+	      	static_cookie = res.headers["set-cookie"];
+	      //console.log("REP",res.headers)
 	      var data = "";
 	      res.on('data', function (chunk) {
 			data += chunk;
@@ -42,6 +43,7 @@ var callNsApi = function(opt, post,cb) {
 	      		else
 		      		cb(null, json_data);
 	      	}catch(e){
+	      		console.log(data);
 	      		cb(e, null);
 	      	}
 			
